@@ -16,7 +16,7 @@ def circulo(num_datos = 100,R = 1, minimo = 0,maximo= 1):
   y = y.reshape((num_datos,1))
   x = x.reshape((num_datos,1))
 
-  #Vamos a reducir el numero de elementos para que no cause un Overflow
+  # Vamos a reducir el numero de elementos para que no cause un Overflow
   x = np.round(x,3)
   y = np.round(y,3)
 
