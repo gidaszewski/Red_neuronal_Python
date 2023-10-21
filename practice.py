@@ -53,24 +53,24 @@ def entrenamiento(X,Y, red_neuronal, lr = 0.01):
   # Guardaremos el error de la capa en delta  
   delta = []
 
-  for capa in back:
+  for Capa in back:
     # Backprop #delta
 
-    a = output[capa+1]
+    a = output[Capa+1]
 
-    if capa == back[0]:
-      x = mse(a,Y)[1] * red_neuronal[capa].funcion_act[1](a)
+    if Capa == back[0]:
+      x = mse(a,Y)[1] * red_neuronal[Capa].funcion_act[1](a)
       delta.append(x)
 
     else:
-      x = delta[-1] @ W_temp * red_neuronal[capa].funcion_act[1](a)
+      x = delta[-1] @ W_temp * red_neuronal[Capa].funcion_act[1](a)
       delta.append(x)
 
-    W_temp = red_neuronal[capa].W.transpose()
+    W_temp = red_neuronal[Capa].W.transpose()
 
     # Gradient Descent #
-    red_neuronal[capa].b = red_neuronal[capa].b - np.mean(delta[-1], axis = 0, keepdims = True) * lr
-    red_neuronal[capa].W = red_neuronal[capa].W - output[capa].transpose() @ delta[-1] * lr
+    red_neuronal[Capa].b = red_neuronal[Capa].b - np.mean(delta[-1], axis = 0, keepdims = True) * lr
+    red_neuronal[Capa].W = red_neuronal[Capa].W - output[Capa].transpose() @ delta[-1] * lr
 
   return output[-1]
 
